@@ -1,0 +1,126 @@
+body {
+  background-color: #dbdbd4;
+  font-size: 0.9rem;
+}
+
+#input-search {
+  border: 1px solid rgb(225, 225, 225);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+#chat {
+  background-image: url(../img/mine.jpg);
+  padding: 50px 80px;
+}
+
+.top-bg {
+  background-color: #009688;
+  height: 7rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.main-container {
+  background-color: white;
+  height: calc(100vh - 32px);
+  margin-top: 16px;
+  position: relative;
+}
+
+.left-container {
+  width: 35%;
+}
+
+.right-container {
+  width: 65%;
+}
+
+.avatar-small {
+  height: 40px;
+}
+
+.avatar {
+  height: 46px;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-light-grey {
+  background-color: #eaeaea;
+}
+
+.bg-light-blue {
+  background-color: #8edafc;
+}
+
+.bg-avorio {
+  background-color: #f3eeea;
+}
+
+.light-blue-color {
+  color: #8edafc;
+}
+
+.icons-color {
+  color: #b1b1b1;
+}
+
+.icons-dark-grey {
+  color: #818181;
+}
+
+.font-small {
+  font-size: 0.8rem;
+}
+
+.font-xsmall {
+  font-size: 0.7rem;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+
+.message {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 10px;
+  width: 260px;
+  position: relative;
+  margin: 4px;
+}
+
+.message-time {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 0.6rem;
+}
+
+.last-message-time {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.6rem;
+}
+
+.sent {
+  background-color: white;
+}
+
+.arrived {
+  background-color: #d5f9ba;
+}
+
+.contatto {
+  width: 100%;
+}
+
+.pointer {
+  cursor: pointer;
+}
