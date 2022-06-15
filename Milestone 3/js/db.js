@@ -171,12 +171,36 @@ const appVue = new Vue({
     messages: contatti[0].messages,
     message: contatti[0].messages[0].message,
     status: contatti[0].messages[0].status,
+    newMessageText: "",
   },
 
   methods: {
     setActiveUser(contatto, activeUser) {
       this.activeUser = contatto;
       console.log(activeUser);
+    },
+
+    autoAnswer(messages, message) {
+      this.messages.push({
+        message: "Ok",
+      });
+    },
+
+    addMessage(messages, message, newMessageText, status, activeUser) {
+      const newMessage = this.newMessageText.trim();
+
+      if (newMessage === "") {
+        return;
+      }
+
+      this.messages.push({
+        message: newMessage,
+        status: "sent",
+      });
+
+      this.newMessageText = "";
+
+      setTimeout(autoAnswer(), 1000);
     },
   },
 });
