@@ -180,27 +180,34 @@ const appVue = new Vue({
       console.log(activeUser);
     },
 
-    autoAnswer(messages, message) {
-      this.messages.push({
-        message: "Ok",
-      });
-    },
-
-    addMessage(autoAnswer, messages, message, newMessageText, status, activeUser) {
+    addMessage(
+      autoAnswer,
+      messages,
+      message,
+      newMessageText,
+      status,
+      activeUser
+    ) {
       const newMessage = this.newMessageText.trim();
 
       if (newMessage === "") {
         return;
       }
 
-      this.messages.push({
+      this.activeUser.messages.push({
         message: newMessage,
         status: "sent",
       });
 
       this.newMessageText = "";
 
-      const myTimeout = setTimeout(autoAnswer(), 1000);
+      setTimeout(() => this.autoAnswer(), 1000);
+    },
+
+    autoAnswer(messages, message, activeUser) {
+      this.activeUser.messages.push({
+        message: "Ok",
+      });
     },
   },
 });
