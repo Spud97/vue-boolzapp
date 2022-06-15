@@ -169,7 +169,7 @@ const appVue = new Vue({
     listaContatti: contatti,
     activeUser: contatti[0],
     messages: contatti[0].messages,
-    message: contatti[0].messages[0],
+    message: contatti[0].messages[0].message,
   },
 
   methods: {
