@@ -83,7 +83,7 @@ body {
 }
 
 .scroll {
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .message {
@@ -109,11 +109,11 @@ body {
   font-size: 0.6rem;
 }
 
-.sent {
+.arrived {
   background-color: white;
 }
 
-.arrived {
+.sent {
   background-color: #d5f9ba;
   align-self: flex-end;
 }

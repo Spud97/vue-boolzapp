@@ -161,3 +161,19 @@ const contatti = [
     ],
   },
 ];
+
+const appVue = new Vue({
+  el: "#app",
+
+  data: {
+    listaContatti: contatti,
+    activeUser: null,
+  },
+
+  methods: {
+    setActiveUser() {
+      this.activeUser = contatto;
+      console.log(activeUser);
+    },
+  },
+});
