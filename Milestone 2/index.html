@@ -120,8 +120,8 @@
             </div>
           </div>
           <div id="chat" class="flex-grow-1 scroll d-flex flex-column">
-            <div class="message sent font-small" v-for="message in activeUser.messages">
-              {{message}}
+            <div :class="{'sent': message.status == 'sent'}" class="message arrived font-small" v-for="message in activeUser.messages">
+              {{message.message}}
               <div class="message-time icons-color p-1">15:30</div>
             </div>
           </div>

@@ -170,6 +170,7 @@ const appVue = new Vue({
     activeUser: contatti[0],
     messages: contatti[0].messages,
     message: contatti[0].messages[0].message,
+    status: contatti[0].messages[0].status,
   },
 
   methods: {
@@ -178,8 +179,5 @@ const appVue = new Vue({
       console.log(activeUser);
     },
 
-    messagesToPrint(contatto, messages) {
-      this.activeUser.messages = messages
-    }
   },
 });
