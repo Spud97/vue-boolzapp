@@ -186,7 +186,7 @@ const appVue = new Vue({
       });
     },
 
-    addMessage(messages, message, newMessageText, status, activeUser) {
+    addMessage(autoAnswer, messages, message, newMessageText, status, activeUser) {
       const newMessage = this.newMessageText.trim();
 
       if (newMessage === "") {
@@ -200,7 +200,7 @@ const appVue = new Vue({
 
       this.newMessageText = "";
 
-      setTimeout(autoAnswer(), 1000);
+      const myTimeout = setTimeout(autoAnswer(), 1000);
     },
   },
 });
