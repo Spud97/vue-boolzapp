@@ -78,7 +78,7 @@
             </form>
           </div>
           <div class="flex-grow-1 scroll">
-            <div v-for="contatto in listaContatti" class="d-flex py-2 px-3 border-bottom" @click="setActiveUser()">
+            <div v-for="contatto in listaContatti" @click="setActiveUser(contatto, activeUser)" :class="{'active': contatto == activeUser}" class="d-flex py-2 px-3 border-bottom">
               <img
                 :src="'../img/avatar' + contatto.avatar + '.jpg'"
                 alt="profile-image"
@@ -102,12 +102,12 @@
           >
             <div class="d-flex">
               <img
-                src="../img/avatar_1.jpg"
+                :src="'../img/avatar' + activeUser.avatar + '.jpg'"
                 alt="profile-image"
                 class="avatar-small rounded-circle"
               />
               <div class="ps-2 d-flex flex-column justify-content-center">
-                <span class="font-small">Michele</span>
+                <span class="font-small">{{activeUser.name}}</span>
                 <span class="font-xsmall text-muted"
                   >Ultimo accesso oggi alle 12:00</span
                 >
@@ -120,8 +120,8 @@
             </div>
           </div>
           <div id="chat" class="flex-grow-1 scroll d-flex flex-column">
-            <div class="message sent font-small">
-              Hai portato a spasso il cane?
+            <div class="message sent font-small" v-for="message in messages">
+              {{activeUser.messages.message}}
               <div class="message-time icons-color p-1">15:30</div>
             </div>
           </div>

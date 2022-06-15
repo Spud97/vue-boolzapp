@@ -167,13 +167,19 @@ const appVue = new Vue({
 
   data: {
     listaContatti: contatti,
-    activeUser: null,
+    activeUser: contatti[0],
+    messages: contatti[0].messages,
+    message: contatti[0].messages[0],
   },
 
   methods: {
-    setActiveUser() {
+    setActiveUser(contatto, activeUser) {
       this.activeUser = contatto;
       console.log(activeUser);
     },
+
+    messagesToPrint(contatto, messages) {
+      this.activeUser.messages = messages
+    }
   },
 });
