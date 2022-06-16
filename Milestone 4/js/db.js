@@ -171,6 +171,7 @@ const appVue = new Vue({
     messages: contatti[0].messages,
     message: contatti[0].messages[0].message,
     status: contatti[0].messages[0].status,
+    name: contatti[0].messages[0].name,
     newMessageText: "",
     newFilterText: "",
   },
@@ -217,8 +218,13 @@ const appVue = new Vue({
       console.log(filterLetters);
       let contattiFiltrati = [];
 
-      for (let i = 0; i < listaContatti.length; i++) {
-        let contattoLetters = i.name.split("")
+      for (let i = 0; i < this.listaContatti.length; i++) {
+        let contattoLetters = this.listaContatti[i].name.split("");
+        console.log(contattoLetters);
+
+        if (contattoLetters.includes(filterLetters[i])) {
+          contattiFiltrati.push(this.listaContatti[i]);
+        }
       }
 
       if (filterText === "") {
