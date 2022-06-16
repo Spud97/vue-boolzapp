@@ -214,11 +214,17 @@ const appVue = new Vue({
     filterList(listaContatti, newFilterText, contatto, name) {
       const filterText = this.newFilterText.trim();
       let filterLetters = filterText.split("");
-      let contattiLetters = this.contatto.name
       console.log(filterLetters);
+      let contattiFiltrati = [];
+
+      for (let i = 0; i < listaContatti.length; i++) {
+        let contattoLetters = i.name.split("")
+      }
 
       if (filterText === "") {
         return this.listaContatti;
+      } else {
+        return contattiFiltrati;
       }
     },
   },
