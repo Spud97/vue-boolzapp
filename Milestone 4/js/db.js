@@ -212,26 +212,32 @@ const appVue = new Vue({
       });
     },
 
-    filterList(listaContatti, newFilterText, contatto, name) {
-      const filterText = this.newFilterText.trim();
-      let filterLetters = filterText.split("");
-      console.log(filterLetters);
-      let contattiFiltrati = [];
-
-      for (let i = 0; i < this.listaContatti.length; i++) {
-        let contattoLetters = this.listaContatti[i].name.split("");
-        console.log(contattoLetters);
-
-        if (contattoLetters.includes(filterLetters[i])) {
-          contattiFiltrati.push(this.listaContatti[i]);
-        }
-      }
-
-      if (filterText === "") {
-        return this.listaContatti;
-      } else {
-        return contattiFiltrati;
-      }
+    filterList(listaContatti, contatto, newFilterText) {
+      return this.listaContatti.filter((contatto) => {
+        return this.contatto.name.toLowerCase().includes(this.newFilterText.trim(" ").toLowerCase());
+      });
     },
+
+    // filterList(listaContatti, newFilterText, contatto, name) {
+    //   const filterText = this.newFilterText.trim();
+    //   let filterLetters = filterText.split("");
+    //   console.log(filterLetters);
+    //   let contattiFiltrati = [];
+
+    //   for (let i = 0; i < this.listaContatti.length; i++) {
+    //     let contattoLetters = this.listaContatti[i].name.split("");
+    //     console.log(contattoLetters);
+
+    //     if (contattoLetters.includes(filterLetters[i])) {
+    //       contattiFiltrati.push(this.listaContatti[i]);
+    //     }
+    //   }
+
+    //   if (filterText === "") {
+    //     return this.listaContatti;
+    //   } else {
+    //     return contattiFiltrati;
+    //   }
+    // },
   },
 });
