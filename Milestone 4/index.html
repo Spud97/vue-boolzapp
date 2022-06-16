@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Boolzapp</title>
+  </head>
+  <body>
+    <div class="top-bg"></div>
+    <div id="app">
+      <div class="container main-container px-0 d-flex">
+        <div class="debug left-container d-flex flex-column">
+          <div class="bg-light-grey p-2 d-flex justify-content-between">
+            <div>
+              <img
+                src="../img/avatar_io.jpg"
+                alt="profile-image"
+                class="avatar-small rounded-circle"
+              />
+              <span class="font-small">Sofia</span>
+            </div>
+            <div class="d-flex align-items-center gap-3 pe-2">
+              <i class="fa-solid fa-circle-notch icons-color pointer"></i>
+              <i class="fa-solid fa-message icons-color pointer"></i>
+              <i class="fa-solid fa-ellipsis-vertical icons-color pointer"></i>
+            </div>
+          </div>
+          <div>
+            <div class="d-flex bg-light-blue px-3 py-2">
+              <div class="bg-white rounded-circle p-2">
+                <i class="fa-solid fa-bell-slash light-blue-color pointer"></i>
+              </div>
+              <div class="ps-2 d-flex flex-column justify-content-center">
+                <span class="font-small"
+                  >Ricevi notifiche di nuovi messaggi</span
+                >
+                <span
+                  class="font-xsmall text-muted text-decoration-underline pointer"
+                  >Attiva notifice desktop</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="bg-light-grey p-1">
+            <form class="form-inline">
+              <div class="input-group">
+                <button
+                  id="input-search"
+                  class="bg-white d-flex align-items-center"
+                >
+                  <span class="px-3" id="basic-addon1"
+                    ><i
+                      class="fa-solid fa-magnifying-glass icons-color font-small pointer"
+                    ></i
+                  ></span>
+                </button>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Cerca o inizia una nuova chat"
+                  aria-label="Cerca o inizia una nuova chat"
+                  aria-describedby="basic-addon1"
+                  v-model="newFilterText"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="flex-grow-1 scroll">
+            <div
+              v-for="contatto in filterList()"
+              @click="setActiveUser(contatto, activeUser)"
+              :class="{'active': contatto == activeUser}"
+              class="d-flex py-2 px-3 border-bottom"
+            >
+              <img
+                :src="'../img/avatar' + contatto.avatar + '.jpg'"
+                alt="profile-image"
+                class="avatar rounded-circle"
+              />
+              <div
+                class="ps-2 d-flex flex-column justify-content-start position-relative contatto"
+              >
+                <span>{{contatto.name}}</span>
+                <span class="font-xsmall icons-color"
+                  >Ultimo messaggio inviato</span
+                >
+                <span class="last-message-time icons-color">12:00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right-container d-flex flex-column">
+          <div
+            class="bg-light-grey p-2 d-flex justify-content-between border-start"
+          >
+            <div class="d-flex">
+              <img
+                :src="'../img/avatar' + activeUser.avatar + '.jpg'"
+                alt="profile-image"
+                class="avatar-small rounded-circle"
+              />
+              <div class="ps-2 d-flex flex-column justify-content-center">
+                <span class="font-small">{{activeUser.name}}</span>
+                <span class="font-xsmall text-muted"
+                  >Ultimo accesso oggi alle 12:00</span
+                >
+              </div>
+            </div>
+            <div class="d-flex align-items-center gap-3 pe-2">
+              <i class="fa-solid fa-circle-notch icons-color pointer"></i>
+              <i class="fa-solid fa-message icons-color pointer"></i>
+              <i class="fa-solid fa-ellipsis-vertical icons-color pointer"></i>
+            </div>
+          </div>
+          <div id="chat" class="flex-grow-1 scroll d-flex flex-column">
+            <div
+              :class="{'sent': message.status == 'sent'}"
+              class="message arrived font-small"
+              v-for="message in activeUser.messages"
+            >
+              {{message.message}}
+              <div class="message-time icons-color p-1">15:30</div>
+            </div>
+          </div>
+          <div
+            class="d-flex align-items-center gap-4 px-4 py-2 bg-avorio border-start"
+          >
+            <i class="fa-regular fa-face-smile pointer"></i>
+            <input
+              type="text"
+              class="form-control"
+              id="messaggio"
+              placeholder="Scrivi un messaggio"
+              v-model="newMessageText"
+              @keyup.enter="addMessage()"
+            />
+            <i class="fa-solid fa-microphone pointer"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/db.js"></script>
+  </body>
+</html>
