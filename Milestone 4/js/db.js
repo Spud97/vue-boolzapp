@@ -168,10 +168,6 @@ const appVue = new Vue({
   data: {
     listaContatti: contatti,
     activeUser: contatti[0],
-    messages: contatti[0].messages,
-    message: contatti[0].messages[0].message,
-    status: contatti[0].messages[0].status,
-    name: contatti[0].messages[0].name,
     newMessageText: "",
     newFilterText: "",
   },
@@ -182,14 +178,7 @@ const appVue = new Vue({
       console.log(activeUser);
     },
 
-    addMessage(
-      autoAnswer,
-      messages,
-      message,
-      newMessageText,
-      status,
-      activeUser
-    ) {
+    addMessage() {
       const newMessage = this.newMessageText.trim();
 
       if (newMessage === "") {
@@ -206,38 +195,18 @@ const appVue = new Vue({
       setTimeout(() => this.autoAnswer(), 1000);
     },
 
-    autoAnswer(messages, message, activeUser) {
+    autoAnswer() {
       this.activeUser.messages.push({
         message: "Ok",
       });
     },
 
-    filterList(listaContatti, contatto, newFilterText) {
-      return this.listaContatti.filter((contatto) => {
-        return this.contatto.name.toLowerCase().includes(this.newFilterText.trim(" ").toLowerCase());
+    filterList() {
+      return this.listaContatti.filter((contact) => {
+        return contact.name
+          .toLowerCase()
+          .includes(this.newFilterText.trim(" ").toLowerCase());
       });
     },
-
-    // filterList(listaContatti, newFilterText, contatto, name) {
-    //   const filterText = this.newFilterText.trim();
-    //   let filterLetters = filterText.split("");
-    //   console.log(filterLetters);
-    //   let contattiFiltrati = [];
-
-    //   for (let i = 0; i < this.listaContatti.length; i++) {
-    //     let contattoLetters = this.listaContatti[i].name.split("");
-    //     console.log(contattoLetters);
-
-    //     if (contattoLetters.includes(filterLetters[i])) {
-    //       contattiFiltrati.push(this.listaContatti[i]);
-    //     }
-    //   }
-
-    //   if (filterText === "") {
-    //     return this.listaContatti;
-    //   } else {
-    //     return contattiFiltrati;
-    //   }
-    // },
   },
 });
